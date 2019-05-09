@@ -56,7 +56,9 @@
             <version>1.2.47</version>
         </dependency>
 
-        <!-- 加载项目中的其他模块，需要先将依赖注册到本地仓库中再打包 -->
+        <!--
+        加入抽取出来的公共项目
+        加载项目中的其他模块，需要先将依赖注册到本地仓库中再打包 -->
         <dependency>
             <groupId>com.jhy</groupId>
             <artifactId>portrait-common</artifactId>

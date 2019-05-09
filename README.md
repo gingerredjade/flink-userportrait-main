@@ -72,7 +72,7 @@ https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.0-Configuratio
 - portrait-analy-service
 - portrait-common
 - portrait-info-in-service
-- portrait-register-center
+- portrait-register-center注册中心模块
 - portrait-search-info
 - portrait-view-service
     

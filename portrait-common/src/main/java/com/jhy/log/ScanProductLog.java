@@ -3,6 +3,8 @@ package com.jhy.log;
 import java.io.Serializable;
 
 /**
+ * 用户行为日志结构以及实体定义-浏览商品行为实体
+ *
  * Created by JHy on 2019/04/26.
  */
 public class ScanProductLog implements Serializable{
