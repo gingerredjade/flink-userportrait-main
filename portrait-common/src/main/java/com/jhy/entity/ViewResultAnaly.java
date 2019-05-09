@@ -6,13 +6,13 @@ import java.util.List;
  * Created by JHy on 2019/04/19.
  */
 public class ViewResultAnaly {
-    private List<String> infolist;          //分组list，x轴的值
-    private List<Long> countlist;           //数量list
+    private List<String> infolist;          // 分组list，x轴的值
+    private List<Long> countlist;           // 数量list
     private String result;
-    private String typename;                //标签类型名称
-    private String lablevalue;              //标签类型对应的值
+    private String typename;                // 标签类型名称
+    private String lablevalue;              // 标签类型对应的值
 
-    private  List<ViewResultAnaly> list;    //所有标签信息
+    private  List<ViewResultAnaly> list;    // 所有标签信息
 
     public List<ViewResultAnaly> getList() {
         return list;

@@ -4,8 +4,8 @@ package com.jhy.entity;
  * Created by JHy on 2019/04/19.
  */
 public class AnalyResult {
-    private String info;        //分组条件
-    private Long count;         //总数
+    private String info;        // 分组条件
+    private Long count;         // 总数
 
     public String getInfo() {
         return info;
