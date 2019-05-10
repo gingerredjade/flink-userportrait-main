@@ -14,6 +14,8 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.8.1</version>
         </dependency>
+
+		<!-- 读取配置文件的包 -->
         <dependency>
             <groupId>com.typesafe</groupId>
             <artifactId>config</artifactId>
