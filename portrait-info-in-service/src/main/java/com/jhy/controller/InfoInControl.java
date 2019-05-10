@@ -35,6 +35,7 @@ public class InfoInControl {
     private final String collectProductLogTopic = ReadProperties.getKey("collectProductLog", _propFileName);
     private final String scanProductLogTopic = ReadProperties.getKey("scanProductLog", _propFileName);
 
+    // 自动注入KafkaTemplate
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
 
@@ -83,11 +84,12 @@ public class InfoInControl {
             AttentionProductLog attentionProductLog = JSONObject.parseObject(data,AttentionProductLog.class);
             // 将实体类对象转换成String类型的JSON字符串
             resultmessage = JSONObject.toJSONString(attentionProductLog);
+            // 调用Kafka的Template发送消息到Kafka
             kafkaTemplate.send(attentionProductLogTopic,resultmessage+"##1##"+new Date().getTime());
         }else if("BuyCartProductLog".equals(classname)){
             BuyCartProductLog buyCartProductLog = JSONObject.parseObject(data, BuyCartProductLog.class);
             resultmessage = JSONObject.toJSONString(buyCartProductLog);
-//            kafkaTemplate.send(buyCartProductLogTopic,resultmessage+"##1##"+new Date().getTime());
+            kafkaTemplate.send(buyCartProductLogTopic,resultmessage+"##1##"+new Date().getTime());
         }else if("CollectProductLog".equals(classname)){
             CollectProductLog collectProductLog = JSONObject.parseObject(data, CollectProductLog.class);
             resultmessage = JSONObject.toJSONString(collectProductLog);
