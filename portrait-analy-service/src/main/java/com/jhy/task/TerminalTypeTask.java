@@ -38,6 +38,9 @@ public class TerminalTypeTask {
 //			return;
 //		}
 
+		/**
+		 * 1-- 获取运行时并设置一些环境变量
+		 */
 		StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 		env.getConfig().disableSysoutLogging();
 		env.getConfig().setRestartStrategy(RestartStrategies.fixedDelayRestart(4, 10000));
@@ -45,6 +48,10 @@ public class TerminalTypeTask {
 		env.getConfig().setGlobalJobParameters(parameterTool); 		// make parameters available in the web interface
 		env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
 
+		/**
+		 * 2-- 添加Source
+		 * 		调用自定义水印生成器
+		 */
 		DataStream<KafkaEvent> input = env
 			.addSource(
 				new FlinkKafkaConsumer010<>(
@@ -52,12 +59,21 @@ public class TerminalTypeTask {
 					new KafkaEventSchema(),
 					parameterTool.getProperties())
 					.assignTimestampsAndWatermarks(new CustomWatermarkExtractor()));
-		DataStream<TerminalTypeInfo> useTypeMap = input.flatMap(new TerminalTypeMap());
 
-		DataStream<TerminalTypeInfo> useTypeReduce = useTypeMap.keyBy("groupbyfield").timeWindowAll(Time.seconds(2)).reduce(new TerminalTypeReduce());
+		/**
+		 * 3-- 定义算子
+		 */
+		DataStream<TerminalTypeInfo> terminalTypeMap = input.flatMap(new TerminalTypeMap());
+		DataStream<TerminalTypeInfo> terminalTypeReduce = terminalTypeMap.keyBy("groupbyfield").timeWindowAll(Time.seconds(2)).reduce(new TerminalTypeReduce());
 
-		useTypeReduce.addSink(new TerminalTypeSink());
+		/**
+		 * 4-- 定义Sink
+		 */
+		terminalTypeReduce.addSink(new TerminalTypeSink());
 
+		/**
+		 * 5-- 启动程序
+		 */
 		try {
 			env.execute("terminalType analy");
 		} catch (Exception e) {
