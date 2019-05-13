@@ -39,7 +39,7 @@ public class BrandLikeTask {
 //			return;
 //		}
 
-		/**
+		/*
 		 * 1-- 获取运行时并设置一些环境变量
  		 */
 		StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
@@ -49,7 +49,7 @@ public class BrandLikeTask {
 		env.getConfig().setGlobalJobParameters(parameterTool); 	// make parameters available in the web interface
 		env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
 
-		/**
+		/*
 		 * 2-- 添加Source
 		 * 		调用自定义水印生成器
 		 */
@@ -61,18 +61,18 @@ public class BrandLikeTask {
 					parameterTool.getProperties())
 					.assignTimestampsAndWatermarks(new CustomWatermarkExtractor()));
 
-		/**
+		/*
 		 * 3-- 定义算子
 		 */
 		DataStream<BrandLike> brandLikeMap = input.flatMap(new BrandLikeMap());
 		DataStream<BrandLike> brandLikeReduce = brandLikeMap.keyBy("groupbyfield").timeWindowAll(Time.seconds(2)).reduce(new BrandLikeReduce());
 
-		/**
+		/*
 		 * 4-- 定义Sink
 		 */
 		brandLikeReduce.addSink(new BrandLikeSink());
 
-		/**
+		/*
 		 * 5-- 启动程序
 		 */
 		try {
