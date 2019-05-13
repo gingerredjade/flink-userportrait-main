@@ -38,7 +38,7 @@ public class TerminalTypeTask {
 //			return;
 //		}
 
-		/**
+		/*
 		 * 1-- 获取运行时并设置一些环境变量
 		 */
 		StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
@@ -48,7 +48,7 @@ public class TerminalTypeTask {
 		env.getConfig().setGlobalJobParameters(parameterTool); 		// make parameters available in the web interface
 		env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
 
-		/**
+		/*
 		 * 2-- 添加Source
 		 * 		调用自定义水印生成器
 		 */
@@ -60,18 +60,18 @@ public class TerminalTypeTask {
 					parameterTool.getProperties())
 					.assignTimestampsAndWatermarks(new CustomWatermarkExtractor()));
 
-		/**
+		/*
 		 * 3-- 定义算子
 		 */
 		DataStream<TerminalTypeInfo> terminalTypeMap = input.flatMap(new TerminalTypeMap());
 		DataStream<TerminalTypeInfo> terminalTypeReduce = terminalTypeMap.keyBy("groupbyfield").timeWindowAll(Time.seconds(2)).reduce(new TerminalTypeReduce());
 
-		/**
+		/*
 		 * 4-- 定义Sink
 		 */
 		terminalTypeReduce.addSink(new TerminalTypeSink());
 
-		/**
+		/*
 		 * 5-- 启动程序
 		 */
 		try {
