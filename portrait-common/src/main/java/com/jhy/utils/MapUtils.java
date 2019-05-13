@@ -6,12 +6,14 @@ import java.util.Set;
 import java.util.TreeMap;
 
 /**
- * Created by JHy on 2019/4/26.
+ * Map工具类
+ *
+ * Created by JHy on 2019/5/13.
  */
 public class MapUtils {
 
     /**
-     *
+     * 获取最大value对应的key
      * @param datamap
      * @return
      */

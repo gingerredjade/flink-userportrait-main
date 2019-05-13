@@ -13,7 +13,7 @@ public class BuyCartProductLog implements Serializable{
      private String operatortime;   // 操作时间
      private int operatortype;      // 操作类型 0、加入；1、删除
      private int userid;            // 用户id
-     private int usetype;           // 终端类型：0、pc端；1、移动端；2、小程序端'
+     private int terminaltype;      // 终端类型：0、pc端；1、移动端；2、小程序端'
      private String ip;             // 用户ip
 
     private String brand;           //品牌
@@ -66,12 +66,12 @@ public class BuyCartProductLog implements Serializable{
         this.userid = userid;
     }
 
-    public int getUsetype() {
-        return usetype;
+    public int getTerminaltype() {
+        return terminaltype;
     }
 
-    public void setUsetype(int usetype) {
-        this.usetype = usetype;
+    public void setTerminaltype(int terminaltype) {
+        this.terminaltype = terminaltype;
     }
 
     public String getIp() {

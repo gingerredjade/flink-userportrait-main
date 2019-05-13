@@ -11,7 +11,7 @@ public class CollectProductLog {
     private String opertortime;     // 操作时间
     private int opertortype;        // 操作类型，0、收藏；1、取消
     private int userid;             // 用户id
-    private int usetype;            // 终端类型：0、pc端；1、移动端；2、小程序端'
+    private int terminaltype;       // 终端类型：0、pc端；1、移动端；2、小程序端'
     private String ip;              // 用户ip
 
     private String brand;           //品牌
@@ -64,12 +64,12 @@ public class CollectProductLog {
         this.userid = userid;
     }
 
-    public int getUsetype() {
-        return usetype;
+    public int getTerminaltype() {
+        return terminaltype;
     }
 
-    public void setUsetype(int usetype) {
-        this.usetype = usetype;
+    public void setTerminaltype(int terminaltype) {
+        this.terminaltype = terminaltype;
     }
 
     public String getIp() {

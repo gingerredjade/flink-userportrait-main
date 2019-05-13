@@ -13,10 +13,10 @@ public class ScanProductLog implements Serializable{
      private String scantime;           // 浏览时间
      private String staytime;           // 停留时间
      private int userid;                // 用户id
-     private int usetype;               // 终端类型：0、pc端；1、移动端；2、小程序端'
+     private int terminaltype;          // 终端类型：0、pc端；1、移动端；2、小程序端'
      private String ip;                 // 用户ip
 
-    private String brand;//品牌
+    private String brand;				// 品牌
 
     public String getBrand() {
         return brand;
@@ -66,12 +66,12 @@ public class ScanProductLog implements Serializable{
         this.userid = userid;
     }
 
-    public int getUsetype() {
-        return usetype;
+    public int getTerminaltype() {
+        return terminaltype;
     }
 
-    public void setUsetype(int usetype) {
-        this.usetype = usetype;
+    public void setTerminaltype(int terminaltype) {
+        this.terminaltype = terminaltype;
     }
 
     public String getIp() {
