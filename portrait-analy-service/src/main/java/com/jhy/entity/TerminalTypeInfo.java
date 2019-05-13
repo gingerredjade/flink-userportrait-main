@@ -2,18 +2,19 @@ package com.jhy.entity;
 
 /**
  * 终端偏好实体类
+ *
  * Created by JHy on 2019/04/25
  */
 public class TerminalTypeInfo {
-    private String terminaltype;         // 用户类型
-    private long count;             // 数量
-    private String groupbyfield;    // 分组。。。。
+    private String terminaltype;        // 终端类型
+    private long count;             	// 数量
+    private String groupbyfield;    	// 分组字段
 
-    public String getUsetype() {
+    public String getTerminaltype() {
         return terminaltype;
     }
 
-    public void setUsetype(String terminaltype) {
+    public void setTerminaltype(String terminaltype) {
         this.terminaltype = terminaltype;
     }
 

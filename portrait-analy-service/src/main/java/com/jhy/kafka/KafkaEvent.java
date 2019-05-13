@@ -25,10 +25,10 @@ package com.jhy.kafka;
  * For a demonstration of this, see the code in {@link Kafka010Example}.
  */
 public class KafkaEvent {
-    private final static String splitword = "##";
-    private String word;
-    private int frequency;
-    private long timestamp;
+    private final static String splitword = "##";	// 分隔符
+    private String word;							// 数据
+    private int frequency;							// 频次
+    private long timestamp;							// 时间
 
     public KafkaEvent() {}
 

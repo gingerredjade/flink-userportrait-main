@@ -84,7 +84,7 @@ public class InfoInControl {
             AttentionProductLog attentionProductLog = JSONObject.parseObject(data,AttentionProductLog.class);
             // 将实体类对象转换成String类型的JSON字符串
             resultmessage = JSONObject.toJSONString(attentionProductLog);
-            // 调用Kafka的Template发送消息到Kafka
+            // 调用Kafka的Template发送消息到Kafka，发到Kafka的数据格式为“resultmessage+"##1##"+new Date().getTime()”即数据+频次+时间，中间以‘##’隔开
             kafkaTemplate.send(attentionProductLogTopic,resultmessage+"##1##"+new Date().getTime());
         }else if("BuyCartProductLog".equals(classname)){
             BuyCartProductLog buyCartProductLog = JSONObject.parseObject(data, BuyCartProductLog.class);

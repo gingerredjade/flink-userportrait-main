@@ -24,8 +24,10 @@ import org.apache.flink.api.common.typeinfo.TypeInformation;
 import java.io.IOException;
 
 /**
+ * 该KafkaEventSchema类实现了Kafka事件的序列化和反序列化
+ *
  * The serialization schema for the {@link KafkaEvent} type. This class defines how to transform a
- * Kafka record's bytes to a {@link KafkaEvent}, and vice-versa.
+ * Kafka record's bytes to a {@link KafkaEvent}, and vice-versa（反之亦然）.
  */
 public class KafkaEventSchema implements DeserializationSchema<KafkaEvent>, SerializationSchema<KafkaEvent> {
 
