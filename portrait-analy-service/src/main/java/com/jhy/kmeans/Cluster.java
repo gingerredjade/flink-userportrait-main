@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
  
 public class Cluster {
-    private int id;// 标识
-    private Point center;// 中心
-    private List<Point> members = new ArrayList<Point>();// 成员
+    private int id;										// 标识
+    private Point center;								// 中心
+    private List<Point> members = new ArrayList<Point>();	// 成员
  
     public Cluster(int id, Point center) {
         this.id = id;

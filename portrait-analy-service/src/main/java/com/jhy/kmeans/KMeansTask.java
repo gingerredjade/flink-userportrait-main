@@ -1,16 +1,9 @@
 package com.jhy.kmeans;
 
-import com.youfan.logic.LogicInfo;
-import com.youfan.logic.LogicMap;
-import com.youfan.logic.LogicReduce;
-import org.apache.flink.api.common.io.FileOutputFormat;
-import org.apache.flink.api.common.io.OutputFormat;
 import org.apache.flink.api.java.DataSet;
 import org.apache.flink.api.java.ExecutionEnvironment;
 import org.apache.flink.api.java.utils.ParameterTool;
-import org.apache.flink.configuration.Configuration;
 
-import java.io.IOException;
 import java.util.*;
 
 /**

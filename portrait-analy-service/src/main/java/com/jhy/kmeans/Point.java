@@ -5,9 +5,9 @@ import com.alibaba.fastjson.JSONObject;
 public class Point {
     private float[] localArray;
     private int id;
-    private int clusterId;  // 标识属于哪个类中心。
-    private float dist;     // 标识和所属类中心的距离。
-    private Point clusterPoint;//中心点信息
+    private int clusterId;  	// 标识属于哪个类中心。
+    private float dist;     	// 标识和所属类中心的距离。
+    private Point clusterPoint;	// 中心点信息
 
     public Point getClusterPoint() {
         return clusterPoint;

@@ -2,16 +2,17 @@ package com.jhy.logic;
 
 /**
  * 逻辑回归实体类
+ * 		最终返回的是这个实体类
  *
  * Created by JHy on 2019/05/14
  */
 public class LogicInfo {
 
-	private String variable1;
-	private String variable2;
-	private String variable3;
-	private String labase;
-	private String groupbyfield;
+	private String variable1; 		// 变量1（维度）
+	private String variable2;		// 变量2（维度）
+	private String variable3;		// 变量3（维度）
+	private String labase;			// 标签
+	private String groupbyfield;	// 分组字段
 
 	public String getGroupbyfield() {
 		return groupbyfield;

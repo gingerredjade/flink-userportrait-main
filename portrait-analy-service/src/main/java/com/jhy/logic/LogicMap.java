@@ -7,6 +7,7 @@ import java.util.Random;
 
 /**
  * 逻辑回归算法Map
+ * 		没涉及业务，模仿的，实际要根据业务进行处理！
  *
  * Created by JHy on 2019/04/25
  */

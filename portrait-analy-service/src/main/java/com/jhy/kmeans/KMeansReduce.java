@@ -1,8 +1,5 @@
 package com.jhy.kmeans;
 
-import com.youfan.logic.CreateDataSet;
-import com.youfan.logic.LogicInfo;
-import com.youfan.logic.Logistic;
 import org.apache.flink.api.common.functions.GroupReduceFunction;
 import org.apache.flink.util.Collector;
 

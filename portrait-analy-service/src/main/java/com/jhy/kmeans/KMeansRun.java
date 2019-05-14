@@ -7,17 +7,17 @@ import java.util.Random;
 import java.util.Set;
  
 public class KMeansRun {  
-    private int kNum;                             //簇的个数
-    private int iterNum = 10;                     //迭代次数
+    private int kNum;                             // 簇的个数
+    private int iterNum = 10;                     // 迭代次数
  
-    private int iterMaxTimes = 100000;            //单次迭代最大运行次数
-    private int iterRunTimes = 0;                 //单次迭代实际运行次数
-    private float disDiff = (float) 0.01;         //单次迭代终止条件，两次运行中类中心的距离差
+    private int iterMaxTimes = 100000;            // 单次迭代最大运行次数
+    private int iterRunTimes = 0;                 // 单次迭代实际运行次数
+    private float disDiff = (float) 0.01;         // 单次迭代终止条件，两次运行中类中心的距离差
  
-    private List<float[]> original_data =null;    //用于存放，原始数据集  
-    private static List<Point> pointList = null;  //用于存放，原始数据集所构建的点集
+    private List<float[]> original_data =null;    // 用于存放，原始数据集
+    private static List<Point> pointList = null;  // 用于存放，原始数据集所构建的点集
     private DistanceCompute disC = new DistanceCompute();
-    private int len = 0;                          //用于记录每个数据点的维度
+    private int len = 0;                          // 用于记录每个数据点的维度
  
     public KMeansRun(int k, List<float[]> original_data) {
         this.kNum = k;

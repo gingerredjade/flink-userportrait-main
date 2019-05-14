@@ -14,7 +14,7 @@ public class KMeansMap implements MapFunction<String, KMeans>{
         if(StringUtils.isBlank(s)){
             return null;
         }
-        //2,3,4
+        // 2,3,4
         Random random = new Random();
         String [] temps = s.split(",");
         String variable1 = temps[0];
