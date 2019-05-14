@@ -5,7 +5,10 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
- 
+
+/**
+ * Java实现逻辑回归算法
+ */
 public class Logistic {
  
 	public static void main(String[] args) {
@@ -48,13 +51,16 @@ public class Logistic {
 	/**
 	 */
 	public static void colicTest() {
+		// 训练集
 		CreateDataSet trainingSet = new CreateDataSet();
+		// 测试集
 		CreateDataSet testSet = new CreateDataSet();
-		trainingSet = readFile("testTraining.txt");// 23 445 34 1  45 56 67 0
-		testSet = readFile("Test.txt");// 23 445 34 1  45 56 67 0
-		ArrayList<Double> weights = new ArrayList<Double>();
-		weights = gradAscent1(trainingSet, trainingSet.labels, 500);
-		int errorCount = 0;
+		// 读取数据集（训练集、测试集）
+		trainingSet = readFile("testTraining.txt");					// 23 445 34 1  45 56 67 0
+		testSet = readFile("Test.txt");								// 23 445 34 1  45 56 67 0
+		ArrayList<Double> weights = new ArrayList<Double>();					// 权值，每个维度都会有个最终的权值
+		weights = gradAscent1(trainingSet, trainingSet.labels, 500);	// 获取训练后的权值
+		int errorCount = 0;														// 判断准确率
 		for (int i = 0; i < testSet.data.size(); i++) {
 			if (!classifyVector(testSet.data.get(i), weights).equals(testSet.labels.get(i))) {
 				errorCount++;
@@ -66,6 +72,7 @@ public class Logistic {
 	}
  
 	/**
+	 * 预测函数
 	 * @param inX
 	 * @return
 	 * @Description: [sigmod函数]
@@ -79,14 +86,15 @@ public class Logistic {
 	}
  
 	/**
+	 * 梯度下降法计算权值
 	 * @param dataSet
 	 * @param classLabels
 	 * @param numberIter
 	 * @return
 	 */
 	public static ArrayList<Double> gradAscent1(Matrix dataSet, ArrayList<String> classLabels, int numberIter) {
-		int m = dataSet.data.size();
-		int n = dataSet.data.get(0).size();
+		int m = dataSet.data.size();			// 数据集一共多大
+		int n = dataSet.data.get(0).size();		// 一条数据有多少个维度
 		double alpha = 0.0;
 		int randIndex = 0;
 		ArrayList<Double> weights = new ArrayList<Double>();
@@ -94,12 +102,18 @@ public class Logistic {
 		ArrayList<Double> h = new ArrayList<Double>();
 		ArrayList<Integer> dataIndex = new ArrayList<Integer>();
 		ArrayList<Double> dataMatrixMulweights = new ArrayList<Double>();
+
+		// 将每条数据的每个维度的权值赋为1
 		for (int i = 0; i < n; i++) {
 			weights.add(1.0);
 			weightstmp.add(1.0);
 		}
 		dataMatrixMulweights.add(0.0);
+
+		// 误差值
 		double error = 0.0;
+
+		// numberIter是训练次数
 		for (int j = 0; j < numberIter; j++) {
 			// 产生0到99的数组
 			for (int p = 0; p < m; p++) {
@@ -109,17 +123,22 @@ public class Logistic {
  
 			for (int i = 0; i < m; i++) {
 				alpha = 4 / (1.0 + i + j) + 0.0001;
-				randIndex = (int) (Math.random() * dataIndex.size());
+				randIndex = (int) (Math.random() * dataIndex.size());	// 随机生成索引值
 				dataIndex.remove(randIndex);
 				double temp = 0.0;
 				for (int k = 0; k < n; k++) {
 					temp = temp + Double.parseDouble(dataSet.data.get(randIndex).get(k)) * weights.get(k);
 				}
 				dataMatrixMulweights.set(0, temp);
+
+				// 计算预测值
 				h = sigmoid(dataMatrixMulweights);
+
+				// 计算原始值与预测值间的误差
 				error = Double.parseDouble(classLabels.get(randIndex)) - h.get(0);
 				double tempweight = 0.0;
 				for (int p = 0; p < n; p++) {
+					// 矩阵每列的值与误差相乘并设置权值
 					tempweight = alpha * Double.parseDouble(dataSet.data.get(randIndex).get(p)) * error;
 					weights.set(p, weights.get(p) + tempweight);
 				}

@@ -81,6 +81,13 @@ public class TerminalTypeTask {
 		}
 	}
 
+	/**
+	 * 水印是时间戳，由数据源嵌入或由Flink应用程序生成。
+	 *
+	 * 周期性水印生成器Periodic Watermark：根据事件或处理时间周期性地触发水印生成器(Assigner)。
+	 * 		水印生成器会先调用extractTimestamp方法，然后调用getCurrentWatermark发射水印。
+	 * 		这种实现方法是在每个记录后插入水印，相同时间戳的水印不会被发射出去，以确保水印时间戳是严格递增的。
+	 */
 	private static class CustomWatermarkExtractor implements AssignerWithPeriodicWatermarks<KafkaEvent> {
 
 		private static final long serialVersionUID = -742759155861320823L;
