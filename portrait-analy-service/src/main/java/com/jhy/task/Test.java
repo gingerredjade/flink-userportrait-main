@@ -5,7 +5,7 @@ import org.apache.flink.api.java.ExecutionEnvironment;
 import org.apache.flink.api.java.utils.ParameterTool;
 
 /**
- * 测试
+ * Flink测试类
  * Created by JHy on 2019/04/23
  */
 public class Test {

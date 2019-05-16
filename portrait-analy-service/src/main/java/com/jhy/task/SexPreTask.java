@@ -3,42 +3,50 @@ package com.jhy.task;
 import com.jhy.entity.SexPreInfo;
 import com.jhy.map.SexPreMap;
 import com.jhy.map.SexPresaveMap;
-import com.jhy.reduce.SexpreReduce;
+import com.jhy.reduce.SexPreReduce;
 import org.apache.flink.api.java.DataSet;
 import org.apache.flink.api.java.ExecutionEnvironment;
 import org.apache.flink.api.java.utils.ParameterTool;
-import org.bson.Document;
 
 import java.util.*;
 
 /**
+ * Flink逻辑回归预测性别
+ *
  * Created by li on 2019/1/6.
  */
 public class SexPreTask {
     public static void main(String[] args) {
         final ParameterTool params = ParameterTool.fromArgs(args);
 
-        // set up the execution environment
+        // 1--1 获取运行时-set up the execution environment
         final ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
 
-        // make parameters available in the web interface
+        // 1--2 获取运行时-make parameters available in the web interface
         env.getConfig().setGlobalJobParameters(params);
 
-        // get input data
+        // 2-- 添加source-get input data
         DataSet<String> text = env.readTextFile(params.get("input"));
 
+        // 3-- 定义算子
         DataSet<SexPreInfo> mapresult = text.map(new SexPreMap());
-        DataSet<ArrayList<Double>> reduceresutl = mapresult.groupBy("groupfield").reduceGroup(new SexpreReduce());
+        DataSet<ArrayList<Double>> reduceresult = mapresult.groupBy("groupfield").reduceGroup(new SexPreReduce());
         try {
-            List<ArrayList<Double>> reusltlist = reduceresutl.collect();
-            int groupsize  = reusltlist.size();
+        	// 4-- 处理Reduce结果--获取权值结果集
+            List<ArrayList<Double>> resultlist = reduceresult.collect();
+            int groupsize  = resultlist.size();
+
+            // 4-- 处理Reduce结果--排序求平均值
+			// Integer是下角标，Double是权值，需要排序，所以用TreeMap
             Map<Integer,Double> summap = new TreeMap<Integer,Double>(new Comparator<Integer>() {
                 @Override
                 public int compare(Integer o1, Integer o2) {
                     return o1.compareTo(o2);
                 }
             });
-            for(ArrayList<Double> array:reusltlist){
+
+			// 遍历将结果相加求平均权重值
+            for(ArrayList<Double> array:resultlist){
 
                 for(int i=0;i<array.size();i++){
                     double pre = summap.get(i)==null?0d:summap.get(i);
@@ -54,9 +62,13 @@ public class SexPreTask {
                 finalweight.add(finalvalue);
             }
 
+            // 5-- 根据weight进行性别预测
+			// 5--1 添加source
             DataSet<String> text2 = env.readTextFile(params.get("input2"));
+            // 5--2 定义算子
             text2.map(new SexPresaveMap(finalweight));
 
+			// 6-- 启动程序
             env.execute("sexPreTask analy");
         } catch (Exception e) {
             e.printStackTrace();

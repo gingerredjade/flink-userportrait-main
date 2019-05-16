@@ -41,7 +41,7 @@ public class LogicTask {
 				}
 			});
 
-			// 遍历将结果相加
+			// 遍历将结果相加求平均值
 			for(ArrayList<Double> array:resultlist){
 				for(int i=0;i<array.size();i++){
 					double pre = summap.get(i)==null?0d:summap.get(i);
