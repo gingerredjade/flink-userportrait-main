@@ -2,9 +2,13 @@ package com.jhy.kmeans;
 
 import com.alibaba.fastjson.JSONObject;
 
+/**
+ * Kmeans点的数据结构,点可以由多个维度组成。
+ * Created by JHy on 2019/5/15.
+ */
 public class Point {
-    private float[] localArray;
-    private int id;
+    private float[] localArray;	// 维度数组
+    private int id;				// 中心点ID
     private int clusterId;  	// 标识属于哪个类中心。
     private float dist;     	// 标识和所属类中心的距离。
     private Point clusterPoint;	// 中心点信息
@@ -37,7 +41,7 @@ public class Point {
     }
  
     public Point(float[] localArray) {
-        this.id = -1; //表示不属于任意一个类
+        this.id = -1; 			// 表示不属于任意一个类
         this.localArray = localArray;
     }
  

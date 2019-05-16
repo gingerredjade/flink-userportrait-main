@@ -1,13 +1,14 @@
 package com.jhy.kmeans;
 
 /**
- * Created by li on 2019/1/6.
+ * KMeans实体类
+ * Created by JHy on 2019/5/16.
  */
 public class KMeans {
-    private String variable1;
-    private String variable2;
-    private String variable3;
-    private String groupbyfield;
+    private String variable1;		// 变量1（点）
+    private String variable2;		// 变量2（点）
+    private String variable3;		// 变量3（点）
+    private String groupbyfield;	// 分组字段
 
     public String getVariable1() {
         return variable1;

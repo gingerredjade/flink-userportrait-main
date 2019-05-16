@@ -8,12 +8,15 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Created by li on 2019/1/5.
+ * KMeansFinalMap
+ *  [该类负责给每个点Point打上它属于哪个中心点的标签,返回点]
+ *
+ * Created by JHy on 2019/5/15.
  */
 public class KMeansFinalMap implements MapFunction<String, Point>{
 
-    private List<Point> centers = new ArrayList<Point>();
-    private DistanceCompute disC = new DistanceCompute();
+    private List<Point> centers = new ArrayList<Point>();	// 成员变量
+    private DistanceCompute disC = new DistanceCompute();	// 成员变量
 
     public KMeansFinalMap(List<Point> centers){
             this.centers = centers;
@@ -23,7 +26,7 @@ public class KMeansFinalMap implements MapFunction<String, Point>{
         if(StringUtils.isBlank(s)){
             return null;
         }
-        //2,3,4
+        // 2,3,4
         Random random = new Random();
         String [] temps = s.split(",");
         String variable1 = temps[0];

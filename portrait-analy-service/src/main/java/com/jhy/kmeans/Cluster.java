@@ -2,11 +2,15 @@ package com.jhy.kmeans;
 
 import java.util.ArrayList;
 import java.util.List;
- 
+
+/**
+ * Kmeans中心类的数据结构（簇）,每个簇Cluster包含多个点Point。
+ * Created by li on 2019/5/15.
+ */
 public class Cluster {
-    private int id;										// 标识
-    private Point center;								// 中心
-    private List<Point> members = new ArrayList<Point>();	// 成员
+    private int id;												// 簇的唯一标识
+    private Point center;										// 中心（簇的中心点的数据）
+    private List<Point> members = new ArrayList<Point>();		// 成员（簇下包含哪些点）
  
     public Cluster(int id, Point center) {
         this.id = id;
@@ -18,8 +22,12 @@ public class Cluster {
         this.center = center;
         this.members = members;
     }
- 
-    public void addPoint(Point newPoint) {
+
+	/**
+	 * 把点加到成员列表里
+	 * @param newPoint
+	 */
+	public void addPoint(Point newPoint) {
         if (!members.contains(newPoint)){
             members.add(newPoint);
         }else{

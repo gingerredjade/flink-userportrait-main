@@ -6,7 +6,8 @@ import org.apache.flink.api.common.functions.MapFunction;
 import java.util.Random;
 
 /**
- * Created by li on 2019/1/5.
+ * KMeansFinalMap
+ * Created by JHy on 2019/5/15.
  */
 public class KMeansMap implements MapFunction<String, KMeans>{
     @Override

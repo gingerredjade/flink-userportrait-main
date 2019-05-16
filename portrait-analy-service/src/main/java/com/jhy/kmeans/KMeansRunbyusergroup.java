@@ -2,6 +2,10 @@ package com.jhy.kmeans;
 
 import java.util.*;
 
+/**
+ *
+ * Created by JHy on 2019/5/14.
+ */
 public class KMeansRunbyusergroup {
     private int kNum;                             // 簇的个数
     private int iterNum = 10;                     // 迭代次数
@@ -19,9 +23,9 @@ public class KMeansRunbyusergroup {
         this.kNum = k;
         this.original_data = original_data;
         this.len = original_data.get(0).length-1;
-        //检查规范
+        // 检查规范
         check();
-        //初始化点集。
+        // 初始化点集。
         init();
     }
  

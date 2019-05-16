@@ -5,7 +5,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
- 
+
+/**
+ * KMeans运行类
+ * Created by JHy on 2019/5/15.
+ */
 public class KMeansRun {  
     private int kNum;                             // 簇的个数
     private int iterNum = 10;                     // 迭代次数
@@ -14,8 +18,8 @@ public class KMeansRun {
     private int iterRunTimes = 0;                 // 单次迭代实际运行次数
     private float disDiff = (float) 0.01;         // 单次迭代终止条件，两次运行中类中心的距离差
  
-    private List<float[]> original_data =null;    // 用于存放，原始数据集
-    private static List<Point> pointList = null;  // 用于存放，原始数据集所构建的点集
+    private List<float[]> original_data =null;    // 用于存放原始数据集
+    private static List<Point> pointList = null;  // 用于存放原始数据集所构建的点集
     private DistanceCompute disC = new DistanceCompute();
     private int len = 0;                          // 用于记录每个数据点的维度
  
@@ -23,9 +27,9 @@ public class KMeansRun {
         this.kNum = k;
         this.original_data = original_data;
         this.len = original_data.get(0).length; 
-        //检查规范
+        // 检查规范
         check();
-        //初始化点集。
+        // 初始化点集。
         init();
     }
  
@@ -135,10 +139,13 @@ public class KMeansRun {
      * 运行 k-means
      */
     public Set<Cluster> run() {
+    	// 选择中心点
         Set<Cluster> clusterSet= chooseCenterCluster();
         boolean ifNeedIter = true; 
         while (ifNeedIter) {
+        	// 为每个点分配一个类
             cluster(clusterSet);
+            // 重新计算中心位置
             ifNeedIter = calculateCenter(clusterSet);
             iterRunTimes ++ ;
         }
