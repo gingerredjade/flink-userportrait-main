@@ -7,12 +7,12 @@ import java.util.List;
  * Created by JHy on 2019/04/25
  */
 public class ChaomanAndWomenInfo {
-    private String chaotype;            //1,潮男 ；2，潮女
-    private String userid;              //用户id
-    private long count;                 //
-    private String groupbyfield;        //
+    private String chaotype;            	// 1：潮男；2：潮女
+    private String userid;              	// 用户id
+    private long count;                 	// 数量
+    private String groupbyfield;        	// 分组字段
 
-    private List<ChaomanAndWomenInfo> list;
+    private List<ChaomanAndWomenInfo> list;	//
 
     public String getChaotype() {
         return chaotype;

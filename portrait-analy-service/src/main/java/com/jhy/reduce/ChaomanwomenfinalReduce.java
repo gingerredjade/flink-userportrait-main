@@ -4,7 +4,9 @@ import com.jhy.entity.ChaomanAndWomenInfo;
 import org.apache.flink.api.common.functions.ReduceFunction;
 
 /**
- * Created by li on 2019/1/5.
+ * [统计潮流男装/潮流女装的数量]
+ *
+ * Created by JHy on 2019/5/17.
  */
 public class ChaomanwomenfinalReduce implements ReduceFunction<ChaomanAndWomenInfo>{
 

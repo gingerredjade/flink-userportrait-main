@@ -6,7 +6,10 @@ import org.apache.flink.streaming.api.functions.sink.SinkFunction;
 import org.bson.Document;
 
 /**
- * Created by li on 2019/1/6.
+ * 潮男潮女标签Sink
+ *      将统计的潮流类型存到Mongo里
+ *
+ * Created by JHy on 2019/5/17.
  */
 public class ChaoManAndWomenSink implements SinkFunction<ChaomanAndWomenInfo> {
     @Override

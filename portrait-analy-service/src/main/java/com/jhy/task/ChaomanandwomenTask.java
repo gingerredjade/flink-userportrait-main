@@ -21,11 +21,14 @@ import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer010;
 import javax.annotation.Nullable;
 
 /**
- * Created by li on 2019/1/6.
+ * 潮男潮女任务类
+ *		[根据数据实时计算是否是潮男/潮女]
+ *
+ * Created by JHy on 2019/5/17.
  */
 public class ChaomanandwomenTask {
     public static void main(String[] args) {
-        // parse input arguments
+        // 0-- 准备参数 parse input arguments
         args = new String[]{"--input-topic","scanProductLog","--bootstrap.servers","192.168.75.20:9092","--zookeeper.connect","192.168.75.20:2181","--group.id","jhy"};
         final ParameterTool parameterTool = ParameterTool.fromArgs(args);
 
@@ -37,6 +40,7 @@ public class ChaomanandwomenTask {
 //			return;
 //		}
 
+		// 1-- 获取运行时
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         env.getConfig().disableSysoutLogging();
         env.getConfig().setRestartStrategy(RestartStrategies.fixedDelayRestart(4, 10000));
@@ -44,6 +48,7 @@ public class ChaomanandwomenTask {
         env.getConfig().setGlobalJobParameters(parameterTool); 		// make parameters available in the web interface
         env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
 
+        // 2-- 添加source
         DataStream<KafkaEvent> input = env
                 .addSource(
                         new FlinkKafkaConsumer010<>(
@@ -51,12 +56,15 @@ public class ChaomanandwomenTask {
                                 new KafkaEventSchema(),
                                 parameterTool.getProperties())
                                 .assignTimestampsAndWatermarks(new CustomWatermarkExtractor()));
+        // 3-- 定义算子
         DataStream<ChaomanAndWomenInfo> chaomanAndWomenMap = input.flatMap(new ChaomanAndwomenMap());
 
         DataStream<ChaomanAndWomenInfo> chaomanAndWomenReduce = chaomanAndWomenMap.keyBy("groupbyfield").timeWindowAll(Time.seconds(2)).reduce(new ChaomanandwomenReduce()).flatMap(new ChaomanAndwomenbyreduceMap());
         DataStream<ChaomanAndWomenInfo> chaomanAndWomenReducefinal = chaomanAndWomenReduce.keyBy("groupbyfield").reduce(new ChaomanwomenfinalReduce());
+        // 4-- 定义sink
         chaomanAndWomenReducefinal.addSink(new ChaoManAndWomenSink());
         try {
+        	// 5-- 启动程序
             env.execute("ChaomanandwomenTask analy");
         } catch (Exception e) {
             e.printStackTrace();

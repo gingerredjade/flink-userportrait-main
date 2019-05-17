@@ -6,7 +6,10 @@ import org.apache.flink.api.common.functions.ReduceFunction;
 import java.util.List;
 
 /**
- * Created by li on 2019/1/6.
+ * ChaomanandwomenReduce
+ *		[统计]
+ *
+ * Created by JHy on 2019/5/17.
  */
 public class ChaomanandwomenReduce implements ReduceFunction<ChaomanAndWomenInfo> {
     @Override
