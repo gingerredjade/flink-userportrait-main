@@ -7,14 +7,17 @@ import org.apache.flink.api.common.functions.MapFunction;
 /**
  * 消费水平Map
  *
- * Created by li on 2019/1/5.
+ * Created by JHy on 2019/5/17.
  */
 public class CounsumptionLevelMap implements MapFunction<String,ConsumptionLevel>{
     @Override
     public ConsumptionLevel map(String s) throws Exception {
-        if(StringUtils.isBlank(s)){
+        // 1-- 参数检测
+    	if(StringUtils.isBlank(s)){
             return null;
         }
+
+    	// 2-- 参数解析
         String[] orderinfos = s.split(",");
         String id= orderinfos[0];
         String productid = orderinfos[1];
@@ -30,9 +33,10 @@ public class CounsumptionLevelMap implements MapFunction<String,ConsumptionLevel
         String num = orderinfos[11];
         String userid = orderinfos[12];
 
+		// 3-- 构造消费水平实体对象
         ConsumptionLevel consumptionLevel = new ConsumptionLevel();
         consumptionLevel.setUserid(userid);
-        consumptionLevel.setAmounttotaol(totalamount);
+        consumptionLevel.setAmounttotal(totalamount);
         consumptionLevel.setGroupfield("=== consumptionLevel=="+userid);
 
         return consumptionLevel;

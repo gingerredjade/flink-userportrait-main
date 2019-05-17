@@ -5,11 +5,11 @@ package com.jhy.entity;
  * Created by JHy on 2019/04/25
  */
 public class ConsumptionLevel {
-    private String consumptiontype;     //消费水平 高水平 中等水平 低水平
-    private Long count;                 //数量
-    private String groupfield;          //分组字段
-    private String userid;              //用户id
-    private String amounttotaol;        //金额
+    private String consumptiontype;     // 消费水平：高水平 中等水平 低水平
+    private Long count;                 // 数量
+    private String groupfield;          // 分组字段
+    private String userid;              // 用户id
+    private String amounttotal;        // 金额
 
     public String getConsumptiontype() {
         return consumptiontype;
@@ -43,11 +43,11 @@ public class ConsumptionLevel {
         this.userid = userid;
     }
 
-    public String getAmounttotaol() {
-        return amounttotaol;
+    public String getAmounttotal() {
+        return amounttotal;
     }
 
-    public void setAmounttotaol(String amounttotaol) {
-        this.amounttotaol = amounttotaol;
+    public void setAmounttotal(String amounttotaol) {
+        this.amounttotal = amounttotaol;
     }
 }

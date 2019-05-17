@@ -5,7 +5,9 @@ import org.apache.flink.api.common.functions.ReduceFunction;
 
 /**
  * 消费水平Final Reduce
- * Created by li on 2019/1/5.
+ * 		[统计消费水平对应的数量，返回新消费水平实体]
+ *
+ * Created by JHy on 2019/5/17.
  */
 public class ConsumptionLeaveFinalReduce implements ReduceFunction<ConsumptionLevel>{
     @Override

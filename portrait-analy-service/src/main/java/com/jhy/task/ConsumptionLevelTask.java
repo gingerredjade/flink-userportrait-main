@@ -13,30 +13,36 @@ import org.bson.Document;
 import java.util.List;
 
 /**
- * Created by li on 2019/1/5.
+ * 消费水平标签任务类
+ *
+ * Created by JHy on 2019/5/17.
  */
 public class ConsumptionLevelTask {
     public static void main(String[] args) {
         final ParameterTool params = ParameterTool.fromArgs(args);
 
+        // 1--获取运行时
         // set up the execution environment
         final ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
 
         // make parameters available in the web interface
         env.getConfig().setGlobalJobParameters(params);
 
-        // get input data
+        // 2-- 添加source    get input data
         DataSet<String> text = env.readTextFile(params.get("input"));
 
+        // 3-- 定义算子
         DataSet<ConsumptionLevel> mapresult = text.map(new CounsumptionLevelMap());
         DataSet<ConsumptionLevel> reduceresult = mapresult.groupBy("groupfield").reduceGroup(new ConsumptionLevelReduce());
         DataSet<ConsumptionLevel> reduceresultfinal = reduceresult.groupBy("groupfield").reduce(new ConsumptionLeaveFinalReduce());
         try {
+        	// 4-- 获取Reduce结果
             List<ConsumptionLevel> reusltlist = reduceresultfinal.collect();
             for(ConsumptionLevel consumptionLevel:reusltlist){
                 String consumptiontype = consumptionLevel.getConsumptiontype();
                 Long count = consumptionLevel.getCount();
 
+                // 5-- 将结果数据存储到Mongo
                 Document doc = MongoUtils.findoneby("consumptionlevelstatics","jhyPortrait",consumptiontype);
                 if(doc == null){
                     doc = new Document();
@@ -49,6 +55,8 @@ public class ConsumptionLevelTask {
                 }
                 MongoUtils.saveorupdatemongo("consumptionlevelstatics","jhyPortrait",doc);
             }
+
+            // 6-- 启动程序
             env.execute("ConsumptionLevelTask analy");
         } catch (Exception e) {
             e.printStackTrace();
