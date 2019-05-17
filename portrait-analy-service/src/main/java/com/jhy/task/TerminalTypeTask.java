@@ -19,7 +19,7 @@ import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer010;
 import javax.annotation.Nullable;
 
 /**
- * 用户终端偏好标签
+ * 用户终端偏好标签任务类
  *
  * Created by JHy on 2019/05/13
  */

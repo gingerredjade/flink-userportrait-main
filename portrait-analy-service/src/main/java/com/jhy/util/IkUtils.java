@@ -21,7 +21,7 @@ public class IkUtils {
         List<String> resultlist = new ArrayList<String>();
         StringReader reader=new StringReader(word);
 
-        //分词
+        // 分词
         TokenStream ts= null;
         try {
             ts = anal.tokenStream("", reader);
@@ -30,7 +30,7 @@ public class IkUtils {
         }
         CharTermAttribute term=ts.getAttribute(CharTermAttribute.class);
 
-        //遍历分词数据
+        // 遍历分词数据
         try {
             while(ts.incrementToken()){
                 String result = term.toString();

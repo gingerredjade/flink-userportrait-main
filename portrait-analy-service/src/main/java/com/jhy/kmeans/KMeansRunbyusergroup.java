@@ -3,7 +3,7 @@ package com.jhy.kmeans;
 import java.util.*;
 
 /**
- *
+ * KMeans运行类 for UserGroup
  * Created by JHy on 2019/5/14.
  */
 public class KMeansRunbyusergroup {

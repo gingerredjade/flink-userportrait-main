@@ -8,15 +8,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by li on 2019/1/13.
+ * 用户分群Map
+ * 		[接收的日志信息就是订单信息,封装成用户分群实体]
+ *
+ * Created by JHy on 2019/5/16.
  */
 public class UserGroupMap implements MapFunction<String, UserGroupInfo> {
 
     @Override
     public UserGroupInfo map(String s) throws Exception {
-        if(StringUtils.isBlank(s)){
+        // 1-- 参数校验
+    	if(StringUtils.isBlank(s)){
             return null;
         }
+
+    	// 2-- 获取参数信息
         String[] orderinfos = s.split(",");
         String id= orderinfos[0];
         String productid = orderinfos[1];
@@ -32,6 +38,7 @@ public class UserGroupMap implements MapFunction<String, UserGroupInfo> {
         String num = orderinfos[11];
         String userid = orderinfos[12];
 
+        // 3-- 封装UserGroupInfo对象
         UserGroupInfo userGroupInfo = new UserGroupInfo();
         userGroupInfo.setUserid(userid);
         userGroupInfo.setCreatetime(createtime);
@@ -48,6 +55,8 @@ public class UserGroupMap implements MapFunction<String, UserGroupInfo> {
         List<UserGroupInfo> list = new ArrayList<UserGroupInfo>();
         list.add(userGroupInfo);
         userGroupInfo.setList(list);
+
+		// 4-- 返回UserGroupInfo对象
         return userGroupInfo;
     }
 }

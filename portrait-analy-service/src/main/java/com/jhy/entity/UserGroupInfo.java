@@ -3,25 +3,30 @@ package com.jhy.entity;
 import java.util.List;
 
 /**
- * 实体类
+ * 用户分群实体类
+ * 		维度-[平均消费金额、消费最大金额、消费频次、消费类目、消费时间点]
+ *
  * Created by JHy on 2019/04/25
  */
 public class UserGroupInfo {
 
     private String userid;
-    private String createtime;
-    private String amount ;
-    private String paytype ;
-    private String paytime;
+    private String createtime;			// 订单创建时间
+    private String amount ;				// 订单金额
+    private String paytype ;			// 订单支付类型
+    private String paytime;				// 订单支付时间
     private String paystatus;           // 0、未支付 1、已支付 2、已退款
-    private String couponamount;
-    private String totalamount;
-    private String refundamount;
+    private String couponamount;		// 使用优惠券金额
+    private String totalamount;			// 订单支付总金额
+    private String refundamount;		// 退款金额
     private Long count;                 // 数量
     private String producttypeid;       // 消费类目
-    private String groupfield;          // 分组
-    private List<UserGroupInfo> list;   // 一个用户所有的消费信息
+    private String groupfield;          // 分组字段
+    private List<UserGroupInfo> list;   // 一个用户对应的所有的消费信息
 
+	/*
+	定义用户分群消费指标
+	 */
     private double avramout;            // 平均消费金额
     private double maxamout;            // 消费最大金额
     private int days;                   // 消费频次

@@ -7,10 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by li on 2019/1/5.
+ * 用户分群Reduce
+ *		[整合用户的消费信息]
+ *
+ * Created by JHy on 2019/5/16.
  */
 public class UserGroupInfoReduce implements ReduceFunction<UserGroupInfo>{
-
 
     @Override
     public UserGroupInfo reduce(UserGroupInfo userGroupInfo1, UserGroupInfo userGroupInfo2) throws Exception {

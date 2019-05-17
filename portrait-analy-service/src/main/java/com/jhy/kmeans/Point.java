@@ -8,7 +8,7 @@ import com.alibaba.fastjson.JSONObject;
  */
 public class Point {
     private float[] localArray;	// 维度数组
-    private int id;				// 中心点ID
+    private int id;				//
     private int clusterId;  	// 标识属于哪个类中心。
     private float dist;     	// 标识和所属类中心的距离。
     private Point clusterPoint;	// 中心点信息
