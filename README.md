@@ -11,6 +11,7 @@
 - 版本：mysql-installer-community-8.0.15.0.msi
 - 账户名:root
 - 密码：jianghongyu
+- 端口：3306
 - 数据库名：jhy_portrait
 - 数据库表结构：见flink-user-portrait-main项目根目录/dbfile/mysql/
 ```
