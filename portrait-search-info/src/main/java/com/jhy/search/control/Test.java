@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by JHy on 2019/1/6.
+ * 模块的controller测试类
+ * Created by JHy on 2019/5/20.
  */
 @RestController
 @RequestMapping("test")

@@ -7,6 +7,10 @@ import com.mongodb.ServerAddress;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Mongo基类 - 连接类
+ * Created by JHy on 2019/5/19.
+ */
 public class BaseMongo {
     protected static MongoClient mongoClient ;
 		
@@ -17,7 +21,7 @@ public class BaseMongo {
 			for (int i = 0; i < addressList.length; i++) {
 				ServerAddress address = new ServerAddress(addressList[i], Integer.parseInt(portList[i]));
 				addresses.add(address);
-				
+
 			}
 			mongoClient = new MongoClient(addresses);
 		}

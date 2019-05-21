@@ -15,25 +15,31 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by JHy on 2019/1/19.
+ * Mongo 服务类
+ * Created by JHy on 2019/5/19.
  */
 @Service
 public class MongoDataServiceImpl extends BaseMongo {
 
-
+	/**
+	 * 通过表名查找数据列表通用接口，支持所有分析结果的查询
+	 *
+	 * @param tablename
+	 * @return
+	 */
     public List<AnalyResult> listMongoInfoby(String tablename) {
         List<AnalyResult> result = new ArrayList<AnalyResult>();
 
 
-        MongoDatabase db = mongoClient.getDatabase("youfanPortrait");
+        MongoDatabase db = mongoClient.getDatabase("jhyPortrait");
         MongoCollection<Document> collection =  db.getCollection(tablename);
 
 
         Document groupFields = new Document();
         Document idFields = new Document();
-        idFields.put("info", "$info");
+        idFields.put("info", "$info");								// 根据info分组
         groupFields.put("_id", idFields);
-        groupFields.put("count", new Document("$sum", "$count"));
+        groupFields.put("count", new Document("$sum", "$count"));	// 加和字段
 
         Document group = new Document("$group", groupFields);
 

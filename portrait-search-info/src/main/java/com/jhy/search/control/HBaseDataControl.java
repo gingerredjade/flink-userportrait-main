@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by JHy on 2019/1/19.
+ * HBase Controller
+ * Created by JHy on 2019/5/20.
  */
 
 /**
