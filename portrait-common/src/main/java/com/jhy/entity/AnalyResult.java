@@ -1,6 +1,7 @@
 package com.jhy.entity;
 
 /**
+ * 分析结果通用实体类
  * Created by JHy on 2019/04/19.
  */
 public class AnalyResult {
