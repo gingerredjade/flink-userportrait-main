@@ -61,56 +61,53 @@ https://github.com/spring-projects/spring-boot/wiki可查看发布日志
 https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.0-Configuration-Changelog查看配置的改变
 ```
 
-# flink-userportrait-main组件结构
-- portrait-analy-service    
+# flink-userportrait-main组件结构及[端口]
+- portrait-analy-service    [无]
 ```
 [Flink画像分析模块]
 
 ```
-- portrait-common           
+- portrait-common           [无]
 ```
 [提取的公共项目]
 含用户行为及日志结构定义、配置文件读取等等。
 
 ```
-- portrait-register-center
+- portrait-register-center  [8761]
 ```
 [注册中心模块]
 
 ```
-- portrait-info-in-service
+- portrait-info-in-service  [8762]
 ```
 [数据收集服务]
 
 ```
-- portrait-search-info 
+- portrait-search-info      [8763]
 ```
-[]
+[接口查询服务]
 
 ```
-- portrait-view-service
+- portrait-view-service     [8764]
 ```
-[]
+[前端查询服务]
+前端查询服务调用接口查询服务获取数据。
 
 ```
 - dbfile 
 ```
 数据库相关文件、脚本等。
 ```
+前端查询服务模块调用接口查询服务模块，获取数据后与vuejs项目对接，vuejs通过http方式请求前端查询接口。
+
 
 # flink-userportrait-main启动顺序
 项目源码使用模块编程，client端注册到了eureka服务端，所以启动项目应该也要启动eureka的服务端。
-1. portrait-register-center
-2. 
-3. 
-
-# 端口
-- portrait-analy-service                        []
-- portrait-common                               []
-- portrait-register-center注册中心模块          [8761]
-- portrait-info-in-service                      [8762]
-- portrait-search-info                          [8763]
-- portrait-view-service                         [8764]
+1. 安装portrait-common
+2. 启动portrait-register-center
+3. 启动
+4. 启动
+5. 启动
 
 # 测试
 1. 注册中心测试http://localhost:8761
@@ -121,22 +118,5 @@ https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.0-Configuratio
     **2）**
 
 3. 
-
-
-# build - 打包
-## 1. IDEA界面
-## 2. 命令行
-```
-2.1 进入项目
-2.2 mvn clean package或mvn clean install
-```
-
-# 知识点记录
-## Flink流处理程序包括5个部分
-1. 获取运行时(Flink执行环境的上下文)  [set up the execution environment]
-2. 添加Source  [get input data]
-3. 定义算子
-4. 定义Sink
-5. 启动程序
 
 

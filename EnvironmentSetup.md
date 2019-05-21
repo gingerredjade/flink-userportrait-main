@@ -229,7 +229,7 @@ PATH=.:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$ZK_HOME/bin:$HBASE_HOM
 
 ```
 ### 二、使用说明
-- 要管理数据库，必须先开机，开机使用mongod --dbpath 指定数据库文档所在的文件夹。
+- 要管理数据库，必须先开机，开机使用mongod --dbpath 指定数据库文档所在的文件夹 --bind_ip IP地址。
 - 管理数据库：mongo(一定要在新的cmd中输入)
 - 清屏：cls。
 - 查看所有数据库列表：show dbs。
