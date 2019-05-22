@@ -6,9 +6,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 /**
+ *
+ * 		FeignClient的值要配置其调用服务端的服务名称即spring.application.name。
+ *
  * Created by JHy on 2019/5/16.
  */
-@FeignClient(value = "youfanSearchInfo")
+@FeignClient(value = "portrait-search-info")
 public interface HBaseDataService {
 
     @RequestMapping(value = "hbaseData/baiJiaZhiShuInfo",method = RequestMethod.POST)

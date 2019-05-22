@@ -19,7 +19,6 @@ import java.util.List;
 	手机运营商：carrierstatics
 	品牌偏好：brandlikestatics
 
-
  * Created by JHy on 2019/5/19.
  */
 @RestController

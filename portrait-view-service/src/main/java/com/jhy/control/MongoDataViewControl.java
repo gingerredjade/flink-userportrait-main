@@ -12,13 +12,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by li on 2019/1/19.
+ * 前端查询Mongo里的各项数据
+ *
+ * Created by JHy on 2019/5/22.
  */
 @RestController
 @RequestMapping("mongoData")
 @CrossOrigin
 public class MongoDataViewControl {
 
+	// 注入MongoDataService
     @Autowired
 	MongoDataService mongoDataService;
 

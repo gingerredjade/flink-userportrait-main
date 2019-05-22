@@ -1,6 +1,8 @@
 package com.jhy.form;
 
 /**
+ * 分析请求参数表单对象实体类
+ *
  * Created by JHy on 2019/05/16.
  */
 public class AnalyForm {

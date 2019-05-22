@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by li on 2019/5/16.
+ * 前端查询HBase里的各项数据
+ *
+ * Created by JHy on 2019/5/22.
  */
 @RestController
 @RequestMapping("hbaseData")
