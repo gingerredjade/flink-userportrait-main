@@ -39,7 +39,7 @@ public class tfIdfAnaly {
             datalist.add(temp);
             for(String inner : listword){
                 tfmap = documenttfmap.get(docid)== null?new HashMap<String,Long>():documenttfmap.get(docid);
-                Long pre = tfmap.get(inner)==null?0l:tfmap.get(inner);
+                Long pre = tfmap.get(inner)==null?0L:tfmap.get(inner);
                 tfmap.put(inner,pre+1);
                 documenttfmap.put(docid,tfmap);
                 wordset.add(inner);
@@ -52,7 +52,7 @@ public class tfIdfAnaly {
         for(String word : wordset){
             for(String tempdata:datalist){
                 if(IkUtils.getIkWord(tempdata).contains(word)){
-                    Long pre = idfMap.get(word)==null?0l:idfMap.get(word);
+                    Long pre = idfMap.get(word)==null?0L:idfMap.get(word);
                     idfMap.put(word,pre+1);
                 }
             }
@@ -67,7 +67,7 @@ public class tfIdfAnaly {
             Map<String,Double> tfidfmap = new HashMap<String,Double>();
             Map<String,Long> tfmaptemp = entry.getValue();
             Collection<Long> collections = tfmaptemp.values();
-            long sumtf = 0l;
+            long sumtf = 0L;
             for(Long templong:collections){
                 sumtf+=templong;
             }
