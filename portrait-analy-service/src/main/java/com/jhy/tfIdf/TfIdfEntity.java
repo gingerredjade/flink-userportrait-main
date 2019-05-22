@@ -7,11 +7,11 @@ import java.util.Map;
  * Created by li on 2019/1/20.
  */
 public class TfIdfEntity {
-    private String documentid;
-    private Map<String,Long> datamap;
-    private Map<String,Double> tfmap;
-    private Long totaldocumet;
-    private List<String> finalword;
+    private String documentid;			// 文档id
+    private Map<String,Long> datamap;	// 某词出现的次数（关键词j在文档i中出现的次数）
+    private Map<String,Double> tfmap;	// 某词出现的频率即TF（关键词j在文档i中的出现频率）
+    private Long totaldocument;			// 总文档数
+    private List<String> finalword;		// 最终的word集合
 
     public List<String> getFinalword() {
         return finalword;
@@ -21,12 +21,12 @@ public class TfIdfEntity {
         this.finalword = finalword;
     }
 
-    public Long getTotaldocumet() {
-        return totaldocumet;
+    public Long getTotaldocument() {
+        return totaldocument;
     }
 
-    public void setTotaldocumet(Long totaldocumet) {
-        this.totaldocumet = totaldocumet;
+    public void setTotaldocument(Long totaldocument) {
+        this.totaldocument = totaldocument;
     }
 
     public Map<String, Double> getTfmap() {
