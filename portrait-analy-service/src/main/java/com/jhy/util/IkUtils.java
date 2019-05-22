@@ -16,21 +16,27 @@ import java.util.List;
  */
 public class IkUtils {
 
+	// 创建IK分词对象，true表示使用智能分词
     private static Analyzer anal = new IKAnalyzer(true);
-    public static List<String> getIkWord(String word){
-        List<String> resultlist = new ArrayList<String>();
-        StringReader reader=new StringReader(word);
 
-        // 分词
-        TokenStream ts= null;
+    public static List<String> getIkWord(String word){
+    	// 分词结果存储集合
+        List<String> resultlist = new ArrayList<String>();
+
+        // 1-- 读取数据为字符流
+        StringReader reader = new StringReader(word);
+
+        // 2-- 分词
+        TokenStream ts = null;
         try {
             ts = anal.tokenStream("", reader);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        CharTermAttribute term=ts.getAttribute(CharTermAttribute.class);
+        // 获取每个单词信息(保存相应词汇)
+        CharTermAttribute term = ts.getAttribute(CharTermAttribute.class);
 
-        // 遍历分词数据
+        // 3-- 遍历分词数据
         try {
             while(ts.incrementToken()){
                 String result = term.toString();
@@ -40,6 +46,8 @@ public class IkUtils {
             e.printStackTrace();
         }
         reader.close();
+
+        // 4-- 返回分词结果
         return resultlist;
     }
 
