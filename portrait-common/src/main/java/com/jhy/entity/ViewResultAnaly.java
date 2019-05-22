@@ -3,7 +3,9 @@ package com.jhy.entity;
 import java.util.List;
 
 /**
- * Created by JHy on 2019/04/19.
+ * 前端查询服务响应结果对象类
+ *
+ * Created by JHy on 2019/05/19.
  */
 public class ViewResultAnaly {
     private List<String> infolist;          // 分组list，x轴的值

@@ -1,7 +1,7 @@
 package com.jhy.entity;
 
 /**
- * 分析结果通用实体类
+ * 接口查询服务-Mongo存储逇数据  分析结果通用实体类
  * Created by JHy on 2019/04/19.
  */
 public class AnalyResult {
