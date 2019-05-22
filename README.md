@@ -105,9 +105,10 @@ https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.0-Configuratio
 项目源码使用模块编程，client端注册到了eureka服务端，所以启动项目应该也要启动eureka的服务端。
 1. 安装portrait-common
 2. 启动portrait-register-center
-3. 启动
-4. 启动
-5. 启动
+3. 启动portrait-info-in-service
+4. 启动portrait-search-info
+5. 启动portrait-view-service
+6. 
 
 # 测试
 1. 注册中心测试http://localhost:8761
