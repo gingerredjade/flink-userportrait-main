@@ -65,34 +65,28 @@ https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.0-Configuratio
 - portrait-analy-service    [无]
 ```
 [Flink画像分析模块]
-
 ```
 - portrait-common           [无]
 ```
 [提取的公共项目]
 含用户行为及日志结构定义、配置文件读取等等。
-
 ```
 - portrait-register-center  [8761]
 ```
 [注册中心模块]
-
 ```
 - portrait-info-in-service  [8762]
 ```
 [数据收集服务]
-
 ```
 - portrait-search-info      [8763]
 ```
 [接口查询服务]
-
 ```
 - portrait-view-service     [8764]
 ```
 [前端查询服务]
 前端查询服务调用接口查询服务获取数据。
-
 ```
 - dbfile 
 ```
@@ -108,7 +102,7 @@ https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.0-Configuratio
 3. 启动portrait-info-in-service
 4. 启动portrait-search-info
 5. 启动portrait-view-service
-6. 
+6. portrait-analy-service做画像分析
 
 # 测试
 1. 注册中心测试http://localhost:8761

@@ -14,15 +14,15 @@ com.jhy.log/*
 ```
 com.jhy.entity/*
 ```
-- AnalyResult:
-- ViewResultAnaly:
+- AnalyResult:接口查询服务-Mongo存储逇数据  分析结果通用实体类
+- ViewResultAnaly:前端查询服务响应结果对象类
 
 ### 工具类
 ```
 com.jhy.utils/*
 ```
-- MapUtils：
-- ReadProperties：
+- MapUtils：Map工具类
+- ReadProperties：properties配置文件读取工具类
 
 
 
