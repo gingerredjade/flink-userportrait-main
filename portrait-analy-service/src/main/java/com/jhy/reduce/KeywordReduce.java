@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * KeywordReduce
+ * 		[对用户的原始词集数据进行聚合，形成最终的词集数据]
+ *
  * Created by li on 2019/1/5.
  */
 public class KeywordReduce implements ReduceFunction<KeyWordEntity>{

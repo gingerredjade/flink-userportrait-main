@@ -24,7 +24,7 @@ public class TFIDFTask {
         DataSet<String> text = env.readTextFile(params.get("input"));
 
         // 3-- 定义算子
-		// 计算TF
+		// 定义Map算子，计算TF
         DataSet<TfIdfEntity> mapresult = text.map(new IdfMap());
         // 统计总文档数
         DataSet<TfIdfEntity> reduceresult = mapresult.reduce(new IdfReduce());

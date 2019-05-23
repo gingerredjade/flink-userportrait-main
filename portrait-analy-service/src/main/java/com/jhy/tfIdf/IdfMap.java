@@ -54,7 +54,7 @@ public class IdfMap implements MapFunction<String, TfIdfEntity> {
         }
         tfIdfEntity.setTfmap(tfmapfinal);
 
-        // 将存入HBase
+        // 存入HBase
         // create "tfidfdata,"baseinfo"
         for(String word:wordset){
             String tablename = "tfidfdata";

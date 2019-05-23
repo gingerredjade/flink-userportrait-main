@@ -19,7 +19,7 @@ public class IdfMapfinal implements MapFunction<TfIdfEntity, TfIdfEntity> {
     private long words;
     public IdfMapfinal(long totaldoucments,long words){
         this.totaldoucments = totaldoucments;
-        this.words =words;
+        this.words = words;
     }
 
     @Override
@@ -43,7 +43,6 @@ public class IdfMapfinal implements MapFunction<TfIdfEntity, TfIdfEntity> {
         for(Map.Entry<String,Double> entry:set){
             String word = entry.getKey();
             Double value = entry.getValue();
-
 
             String data = HBaseUtils.getdata(tablename,rowkey,famliyname,colum);
             long viewcount = Long.valueOf(data);
