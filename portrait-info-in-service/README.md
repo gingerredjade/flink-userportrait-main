@@ -10,7 +10,7 @@
 
 数据处理结果：{"message":"{\"operatortype\":0,\"productid\":2,\"producttypeid\":0,\"userid\":0,\"usetype\":0}","status":"success"}
 
-存储至Kafka：
+存储至Kafka：send
 
 
 ```
