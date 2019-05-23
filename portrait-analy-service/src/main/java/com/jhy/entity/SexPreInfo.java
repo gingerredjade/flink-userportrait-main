@@ -1,7 +1,8 @@
 package com.jhy.entity;
 
 /**
- * 性别预测实体类
+ * 性别预测模型实体类
+ *
  * Created by JHy on 2019/04/25
  */
 public class SexPreInfo {

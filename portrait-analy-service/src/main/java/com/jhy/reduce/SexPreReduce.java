@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
+ * SexPreReduce
+ * 		[梯度下降法对性别预测模型进行训练，计算权值]
+ *
  * Created by li on 2019/1/6.
  */
 public class SexPreReduce implements GroupReduceFunction<SexPreInfo,ArrayList<Double>> {

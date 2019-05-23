@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * 预测性别并将性别标签存入HBase
+ * SexPresaveMap
+ * 		[预测性别并将性别标签存入HBase]
  *
  * Created by li on 2019/1/6.
  */

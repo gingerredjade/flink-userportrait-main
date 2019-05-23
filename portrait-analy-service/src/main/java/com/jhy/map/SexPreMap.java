@@ -6,7 +6,8 @@ import org.apache.flink.api.common.functions.MapFunction;
 import java.util.Random;
 
 /**
- * 性别预测Map
+ * SexPreMap性别预测Map
+ * 		[构造性别预测模型实体对象]
  *
  * Created by li on 2019/1/6.
  */
