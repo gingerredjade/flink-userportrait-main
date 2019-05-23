@@ -16,7 +16,7 @@ public class BuyCartProductLog implements Serializable{
      private int terminaltype;      // 终端类型：0、pc端；1、移动端；2、小程序端'
      private String ip;             // 用户ip
 
-    private String brand;           //品牌
+    private String brand;           // 品牌
 
     public String getBrand() {
         return brand;
