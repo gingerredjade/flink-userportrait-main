@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * HBase Controller
+ * HBase Controller 接口查询服务REST
  * Created by JHy on 2019/5/20.
  */
 
@@ -19,7 +19,7 @@ import java.util.List;
 @RequestMapping("hbaseData")
 public class HBaseDataControl {
 
-
+	// 败家指数
     @RequestMapping(value = "baiJiaZhiShuInfo",method = RequestMethod.POST)
     public String baiJiaZhiShuInfo(String userid){
         String result = "";
@@ -38,7 +38,7 @@ public class HBaseDataControl {
         return result;
     }
 
-
+	// 品牌偏好
     @RequestMapping(value = "brandLike",method = RequestMethod.POST)
     public String brandLike(String userid){
         String result = "";
@@ -56,6 +56,7 @@ public class HBaseDataControl {
         return result;
     }
 
+    // 手机运营商
     @RequestMapping(value = "carrierinfo",method = RequestMethod.POST)
     public String carrierinfo(String userid){
         String result = "";
@@ -73,6 +74,7 @@ public class HBaseDataControl {
         return result;
     }
 
+    // 潮男潮女
     @RequestMapping(value = "chaomanandwomen",method = RequestMethod.POST)
     public String chaomanandwomen(String userid){
         String result = "";
@@ -90,6 +92,7 @@ public class HBaseDataControl {
         return result;
     }
 
+    // 消费水平
     @RequestMapping(value = "consumptionlevel",method = RequestMethod.POST)
     public String consumptionlevel(String userid){
         String result = "";
@@ -107,6 +110,7 @@ public class HBaseDataControl {
         return result;
     }
 
+    // 邮件运营商
     @RequestMapping(value = "emailinfo",method = RequestMethod.POST)
     public String emailinfo(String userid){
         String result = "";
@@ -124,13 +128,14 @@ public class HBaseDataControl {
         return result;
     }
 
+    // 商品年度关键词
     @RequestMapping(value = "yearkeyword",method = RequestMethod.POST)
     public String yearkeyword(String userid){
         String result = "";
 //        String tablename = "userkeywordlabel";
-//        String rowkey=userid;
-//        String famliyname="baseinfo";
-//        String colum="year";
+//        String rowkey = userid;
+//        String famliyname = "baseinfo";
+//        String colum = "year";
 //        String result = "";
 //        try {
 //            result = HBaseServiceImpl.getdata(tablename,rowkey,famliyname,colum);
@@ -141,12 +146,13 @@ public class HBaseDataControl {
         return result;
     }
 
+    // 商品月度关键词
     @RequestMapping(value = "monthkeyword",method = RequestMethod.POST)
     public String monthkeyword(String userid){
         String tablename = "userkeywordlabel";
-        String rowkey=userid;
-        String famliyname="baseinfo";
-        String colum="month";
+        String rowkey = userid;
+        String famliyname = "baseinfo";
+        String colum = "month";
         String result = "";
         try {
             result = HBaseServiceImpl.getdata(tablename,rowkey,famliyname,colum);
@@ -156,12 +162,13 @@ public class HBaseDataControl {
         return result;
     }
 
+    // 商品季度关键词
     @RequestMapping(value = "quarterkeyword",method = RequestMethod.POST)
     public String quarterkeyword(String userid){
         String tablename = "userkeywordlabel";
-        String rowkey=userid;
-        String famliyname="baseinfo";
-        String colum="quarter";
+        String rowkey = userid;
+        String famliyname = "baseinfo";
+        String colum = "quarter";
         String result = "";
         try {
             result = HBaseServiceImpl.getdata(tablename,rowkey,famliyname,colum);
@@ -171,6 +178,7 @@ public class HBaseDataControl {
         return result;
     }
 
+    // 性别预测
     @RequestMapping(value = "sex",method = RequestMethod.POST)
     public String sex(String userid){
         String result = "";
@@ -188,7 +196,7 @@ public class HBaseDataControl {
         return result;
     }
 
-
+	// 用户分群
     @RequestMapping(value = "usergroupinfo",method = RequestMethod.POST)
     public String usergroupinfo(String userid){
             String result = "";
@@ -206,6 +214,7 @@ public class HBaseDataControl {
         return result;
     }
 
+    // 终端偏好
     @RequestMapping(value = "usetypeinfo",method = RequestMethod.POST)
     public String usetypeinfo(String userid){
         String result = "";
@@ -223,6 +232,7 @@ public class HBaseDataControl {
         return result;
     }
 
+    // 年代标签-年龄
     @RequestMapping(value = "ageinfo",method = RequestMethod.POST)
     public String ageinfo(String userid){
         String result = "";

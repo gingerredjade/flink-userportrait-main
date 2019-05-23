@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 前端查询HBase里的各项数据
+ * 前端查询服务REST-查询HBase里的各项数据
  *
  * Created by JHy on 2019/5/22.
  */

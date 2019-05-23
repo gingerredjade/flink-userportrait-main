@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 	Mongo Controller 接口查询服务REST
+ *
  * 	年代：yearbasestatics
  	终端偏好：usetypestatics
  	邮件运营商：emailstatics
