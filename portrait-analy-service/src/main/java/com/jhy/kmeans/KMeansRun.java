@@ -18,7 +18,7 @@ public class KMeansRun {
     private int iterRunTimes = 0;                 // 单次迭代实际运行次数
     private float disDiff = (float) 0.01;         // 单次迭代终止条件，两次运行中类中心的距离差
  
-    private List<float[]> original_data =null;    // 用于存放原始数据集
+    private List<float[]> original_data = null;    // 用于存放原始数据集
     private static List<Point> pointList = null;  // 用于存放原始数据集所构建的点集
     private DistanceCompute disC = new DistanceCompute();
     private int len = 0;                          // 用于记录每个数据点的维度
@@ -72,7 +72,7 @@ public class KMeansRun {
             }
             // 如果随机选取的点没有被选中过，则生成一个cluster
             if (flag) {
-                Cluster cluster =new Cluster(id, point);
+                Cluster cluster = new Cluster(id, point);
                 clusterSet.add(cluster);
                 id++;
             }
@@ -114,7 +114,7 @@ public class KMeansRun {
         boolean ifNeedIter = false; 
         for (Cluster cluster : clusterSet) {
             List<Point> point_list = cluster.getMembers();
-            float[] sumAll =new float[len];
+            float[] sumAll = new float[len];
             // 所有点，对应各个维度进行求和
             for (int i = 0; i < len; i++) {
                 for (int j = 0; j < point_list.size(); j++) {

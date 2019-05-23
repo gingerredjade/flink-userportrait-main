@@ -66,9 +66,9 @@ public class KeywordMap2 implements MapFunction<KeyWordEntity, KeyWordEntity> {
         // create "keyworddata,"baseinfo"
         for(String word:wordset){
             String tablename = "keyworddata";
-            String rowkey=word;
-            String famliyname="baseinfo";
-            String colum="idfcount";
+            String rowkey = word;
+            String famliyname = "baseinfo";
+            String colum ="idfcount";
             String data = HBaseUtils.getdata(tablename,rowkey,famliyname,colum);
             Long pre = data==null?0L:Long.valueOf(data);
             Long total = pre+1;

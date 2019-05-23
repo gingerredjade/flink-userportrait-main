@@ -38,7 +38,7 @@ public class CarrierMap implements MapFunction<String, CarrierInfo> {
         HBaseUtils.putdata(tablename,rowkey,famliyname,colum,carriertypestring);
         CarrierInfo carrierInfo = new CarrierInfo();
         String groupfield = "carrierInfo=="+carriertype;
-        carrierInfo.setCount(1l);
+        carrierInfo.setCount(1L);
         carrierInfo.setCarrier(carriertypestring);
         carrierInfo.setGroupfield(groupfield);
         return carrierInfo;

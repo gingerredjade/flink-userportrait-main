@@ -68,7 +68,7 @@ public class KMeansRunbyusergroup {
             }
             // 如果随机选取的点没有被选中过，则生成一个cluster
             if (flag) {
-                Cluster cluster =new Cluster(id, point);
+                Cluster cluster = new Cluster(id, point);
                 clusterSet.add(cluster);
                 id++;
             }
@@ -110,7 +110,7 @@ public class KMeansRunbyusergroup {
         boolean ifNeedIter = false; 
         for (Cluster cluster : clusterSet) {
             List<Point> point_list = cluster.getMembers();
-            float[] sumAll =new float[len];
+            float[] sumAll = new float[len];
             // 所有点，对应各个维度进行求和
             for (int i = 0; i < len; i++) {
                 for (int j = 0; j < point_list.size(); j++) {

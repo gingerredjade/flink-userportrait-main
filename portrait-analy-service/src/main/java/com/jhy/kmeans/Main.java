@@ -28,7 +28,7 @@ public class Main {
         dataSet.add(new float[] { 7, 8, 4});
 
         // 2-- 获取KMeansRun对象
-        KMeansRun kRun =new KMeansRun(3, dataSet);
+        KMeansRun kRun = new KMeansRun(3, dataSet);
 
         // 3-- 调用run方法进行训练
         Set<Cluster> clusterSet = kRun.run();

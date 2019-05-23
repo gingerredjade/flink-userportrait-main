@@ -26,7 +26,7 @@ public class ChaomanAndwomenbyreduceMap implements FlatMapFunction<ChaomanAndWom
 		// 1--1 将当前潮男潮女类型及数量信息存入内存
         String chaotype = chaomanAndWomenInfo.getChaotype();
         Long count = chaomanAndWomenInfo.getCount();
-        long pre = resultMap.get(chaotype) == null ? 0l : resultMap.get(chaotype);
+        long pre = resultMap.get(chaotype) == null ? 0L : resultMap.get(chaotype);
         resultMap.put(chaotype, pre + count);
 
         String tablename = "userflaginfo";
@@ -39,7 +39,7 @@ public class ChaomanAndwomenbyreduceMap implements FlatMapFunction<ChaomanAndWom
             Map<String, Long> datamap = JSONObject.parseObject(data, Map.class);
             Set<String> keys = resultMap.keySet();
             for (String key : keys) {
-                Long pre1 = datamap.get(key) == null ? 0l : datamap.get(key);
+                Long pre1 = datamap.get(key) == null ? 0L : datamap.get(key);
                 resultMap.put(key, pre1 + resultMap.get(key));
             }
         }
@@ -49,8 +49,8 @@ public class ChaomanAndwomenbyreduceMap implements FlatMapFunction<ChaomanAndWom
         	// 2--1 潮流类型及其数量存入HBase
             String chaomandanwomenmap = JSONObject.toJSONString(resultMap);
             HBaseUtils.putdata(tablename, rowkey, famliyname, colum, chaomandanwomenmap);
-            long chaoman = resultMap.get("1") == null ? 0l : resultMap.get("1");
-            long chaowomen = resultMap.get("2") == null ? 0l : resultMap.get("2");
+            long chaoman = resultMap.get("1") == null ? 0L : resultMap.get("1");
+            long chaowomen = resultMap.get("2") == null ? 0L : resultMap.get("2");
             String flag = "women";
             long finalcount = chaowomen;
             if (chaoman > chaowomen) {
@@ -64,13 +64,13 @@ public class ChaomanAndwomenbyreduceMap implements FlatMapFunction<ChaomanAndWom
                 // 2--2-1 构建返回的潮男潮女实体信息
                 ChaomanAndWomenInfo chaomanAndWomenInfotemp = new ChaomanAndWomenInfo();
                 chaomanAndWomenInfotemp.setChaotype(flag);
-                chaomanAndWomenInfotemp.setCount(1l);
+                chaomanAndWomenInfotemp.setCount(1L);
                 chaomanAndWomenInfotemp.setGroupbyfield(flag + "==chaomanAndWomenInforeduce");
                 String type = HBaseUtils.getdata(tablename, rowkey, famliyname, colum);
                 if (StringUtils.isNotBlank(type) && !type.equals(flag)) {
                     ChaomanAndWomenInfo chaomanAndWomenInfopre = new ChaomanAndWomenInfo();
                     chaomanAndWomenInfopre.setChaotype(type);
-                    chaomanAndWomenInfopre.setCount(-1l);
+                    chaomanAndWomenInfopre.setCount(-1L);
                     chaomanAndWomenInfopre.setGroupbyfield(type + "==chaomanAndWomenInforeduce");
                     collector.collect(chaomanAndWomenInfopre);
                 }

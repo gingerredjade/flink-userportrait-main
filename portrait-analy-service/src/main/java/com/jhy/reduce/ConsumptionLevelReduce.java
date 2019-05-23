@@ -20,7 +20,7 @@ public class ConsumptionLevelReduce implements GroupReduceFunction<ConsumptionLe
     public void reduce(Iterable<ConsumptionLevel> iterable, Collector<ConsumptionLevel> collector) throws Exception {
         // 1-- 遍历输入输入，统计消费总金额
     	Iterator<ConsumptionLevel> iterator = iterable.iterator();
-        int sum=0;
+        int sum = 0;
         double totalamount = 0d;
         String userid = "-1";
         while(iterator.hasNext()){
@@ -52,19 +52,19 @@ public class ConsumptionLevelReduce implements GroupReduceFunction<ConsumptionLe
         	// 3--2 HBase里消费水平为空，构造消费水平对象并返回
             ConsumptionLevel consumptionLevel = new ConsumptionLevel();
             consumptionLevel.setConsumptiontype(flag);
-            consumptionLevel.setCount(1l);
+            consumptionLevel.setCount(1L);
             consumptionLevel.setGroupfield("==consumptionLevelfinal=="+flag);
             collector.collect(consumptionLevel);
         }else if(!data.equals(flag)){
         	// 3--3 判断HBase里之前的消费水平标签是否和现在的一致，不一致将之前的减掉，并设置新增的
             ConsumptionLevel consumptionLevel1 = new ConsumptionLevel();
 			consumptionLevel1.setConsumptiontype(data);
-			consumptionLevel1.setCount(-1l);
+			consumptionLevel1.setCount(-1L);
 			consumptionLevel1.setGroupfield("==consumptionLevelfinal=="+data);
 
             ConsumptionLevel consumptionLevel2 = new ConsumptionLevel();
             consumptionLevel2.setConsumptiontype(flag);
-            consumptionLevel2.setCount(1l);
+            consumptionLevel2.setCount(1L);
 			consumptionLevel2.setGroupfield("==consumptionLevelfinal=="+flag);
             collector.collect(consumptionLevel1);
             collector.collect(consumptionLevel2);

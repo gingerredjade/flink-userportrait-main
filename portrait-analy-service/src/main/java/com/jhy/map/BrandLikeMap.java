@@ -53,7 +53,7 @@ public class BrandLikeMap implements FlatMapFunction<KafkaEvent, BrandLike> {
 		if (StringUtils.isNotBlank(maxbrand)&&!maxprebrand.equals(maxbrand)){
 			BrandLike brandLike = new BrandLike();
 			brandLike.setBrand(maxprebrand);
-			brandLike.setCount(-1l);
+			brandLike.setCount(-1L);
 			brandLike.setGroupbyfield("==brandlike=="+maxprebrand);
 			collector.collect(brandLike);
 		}
@@ -61,7 +61,7 @@ public class BrandLikeMap implements FlatMapFunction<KafkaEvent, BrandLike> {
 		// 2--2 存储当前的品牌偏好
 		BrandLike brandLike = new BrandLike();
 		brandLike.setBrand(maxbrand);
-		brandLike.setCount(1l);
+		brandLike.setCount(1L);
 		collector.collect(brandLike);
 		brandLike.setGroupbyfield("==brandlike=="+maxbrand);
 		colum = "brandlike";

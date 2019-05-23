@@ -38,7 +38,7 @@ public class EmailMap implements MapFunction<String, EmailInfo> {
         EmailInfo emailInfo = new EmailInfo();
         String groupfield = "emailInfo=="+emailtype;
         emailInfo.setEmailtype(emailtype);
-        emailInfo.setCount(1l);
+        emailInfo.setCount(1L);
         emailInfo.setGroupfield(groupfield);
         return emailInfo;
     }

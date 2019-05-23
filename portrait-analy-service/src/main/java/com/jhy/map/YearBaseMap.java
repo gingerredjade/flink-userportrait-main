@@ -46,7 +46,7 @@ public class YearBaseMap implements MapFunction<String, YearBase> {
         YearBase yearBase = new YearBase();
         String groupfield = "yearbase=="+yearbasetype; //
         yearBase.setYeartype(yearbasetype);
-        yearBase.setCount(1l);
+        yearBase.setCount(1L);
         yearBase.setGroupfield(groupfield);
         return yearBase;
     }

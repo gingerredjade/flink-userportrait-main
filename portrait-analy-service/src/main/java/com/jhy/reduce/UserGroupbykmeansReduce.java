@@ -34,7 +34,7 @@ public class UserGroupbykmeansReduce implements GroupReduceFunction<UserGroupInf
         }
 
         // 2-- 根据结果集获取KMeansRunbyusergroup对象
-        KMeansRunbyusergroup kMeansRunbyusergroup =new KMeansRunbyusergroup(6, dataSet);
+        KMeansRunbyusergroup kMeansRunbyusergroup = new KMeansRunbyusergroup(6, dataSet);
 
         // 3-- 调用run方法进行训练
         Set<Cluster> clusterSet = kMeansRunbyusergroup.run();

@@ -16,8 +16,8 @@ public class IkTest {
     public static void main(String[] args) {
         String test = "我喜欢晴天 阳光真的很棒 我喜欢温暖的朝阳";
         // 创建分词对象
-        Analyzer anal=new IKAnalyzer(true);
-        StringReader reader=new StringReader(test);
+        Analyzer anal = new IKAnalyzer(true);
+        StringReader reader = new StringReader(test);
         // 分词
         TokenStream ts= null;
         try {

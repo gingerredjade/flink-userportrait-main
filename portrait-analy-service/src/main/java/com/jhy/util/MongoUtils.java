@@ -27,7 +27,7 @@ public class MongoUtils {
     public static Document findoneby(String tablename, String database, String yearbasetype){
         MongoDatabase mongoDatabase = mongoClient.getDatabase(database);
         MongoCollection mongoCollection = mongoDatabase.getCollection(tablename);
-        Document  doc = new Document();
+        Document doc = new Document();
         doc.put("info", yearbasetype);
         FindIterable<Document> itrer = mongoCollection.find(doc);
         MongoCursor<Document> mongocursor = itrer.iterator();

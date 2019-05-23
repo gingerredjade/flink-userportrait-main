@@ -25,7 +25,7 @@ public class KMeansReduce implements GroupReduceFunction<KMeans,ArrayList<Point>
             dataSet.add(f);
         }
 		// 2-- 获取KMeansRun对象
-        KMeansRun kRun =new KMeansRun(6, dataSet);
+        KMeansRun kRun = new KMeansRun(6, dataSet);
 
 		// 3-- 调用run方法进行训练
         Set<Cluster> clusterSet = kRun.run();

@@ -37,7 +37,7 @@ public class ChaomanAndwomenMap implements FlatMapFunction<KafkaEvent, ChaomanAn
             // 为空表示非潮流商品
             if(StringUtils.isNotBlank(chaotype)){
                 chaomanAndWomenInfo.setChaotype(chaotype);
-                chaomanAndWomenInfo.setCount(1l);
+                chaomanAndWomenInfo.setCount(1L);
                 chaomanAndWomenInfo.setGroupbyfield("chaomanAndWomen=="+userid);	// 根据用户id分组
                 List<ChaomanAndWomenInfo> list = new ArrayList<ChaomanAndWomenInfo>();
                 list.add(chaomanAndWomenInfo);

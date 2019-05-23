@@ -35,7 +35,7 @@ public class KMeansTask {
                 }
             }
 			// 6-- 根据结果集获取KMeansRun对象
-            KMeansRun kRun =new KMeansRun(6, dataSet);
+            KMeansRun kRun = new KMeansRun(6, dataSet);
 
             // 7-- 调用run方法进行训练
             Set<Cluster> clusterSet = kRun.run();

@@ -51,22 +51,22 @@ public class UserGroupMapbyreduce implements MapFunction<UserGroupInfo, UserGrou
         // 排序 ---end
 
 		// 2-- 计算用户分群消费指标
-        double totalamount = 0l;								// 总金额
+        double totalamount = 0L;								// 总金额
         double maxamout = Double.MIN_VALUE;						// 最大金额
 
         Map<Integer,Integer> frequencymap = new HashMap<Integer,Integer>();	// 消费频次
         UserGroupInfo userGroupInfobefore = null;
 
         Map<String,Long> productypemap = new HashMap<String,Long>();		// 商品类别map
-        productypemap.put("1",0l);								// 消费类目1数量
-        productypemap.put("2",0l);								// 消费类目2数量
-        productypemap.put("3",0l);								// 消费类目3数量
+        productypemap.put("1",0L);								// 消费类目1数量
+        productypemap.put("2",0L);								// 消费类目2数量
+        productypemap.put("3",0L);								// 消费类目3数量
         Map<Integer,Long> timeMap = new HashMap<Integer,Long>();			// 时间的map
 																// 时间点，上午（7-12）1，下午（12-7）2，晚上（7-12）3，凌晨（0-7）4
-        timeMap.put(1,0l);										// 消费时间点1数量
-        timeMap.put(2,0l);										// 消费时间点2数量
-        timeMap.put(3,0l);										// 消费时间点3数量
-        timeMap.put(4,0l);										// 消费时间点4数量
+        timeMap.put(1,0L);										// 消费时间点1数量
+        timeMap.put(2,0L);										// 消费时间点2数量
+        timeMap.put(3,0L);										// 消费时间点3数量
+        timeMap.put(4,0L);										// 消费时间点4数量
 
         for(UserGroupInfo usergrinfo : list){
                 // 2--1 [用户分群消费指标之] 计算消费总金额、消费最大金额
@@ -94,7 +94,7 @@ public class UserGroupMapbyreduce implements MapFunction<UserGroupInfo, UserGrou
                 // TODO..
 //                这个好像有点问题Long pre = productypemap.get(productype)==null?0l:productypemap.get(productype);
 //                productypemap.put(productype,pre+1);
-				Long pre = productypemap.get(bitproductype)==null?0l:productypemap.get(bitproductype);
+				Long pre = productypemap.get(bitproductype)==null?0L:productypemap.get(bitproductype);
 				productypemap.put(bitproductype,pre+1);
 
                 // 2--4 [用户分群消费指标之] 时间点，上午（7-12）1，下午（12-7）2，晚上（7-12）3，凌晨（0-7）4

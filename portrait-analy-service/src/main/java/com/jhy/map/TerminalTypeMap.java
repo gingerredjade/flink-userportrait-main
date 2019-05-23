@@ -27,12 +27,12 @@ public class TerminalTypeMap implements FlatMapFunction<KafkaEvent, TerminalType
 		String data = kafkaEvent.getWord();
 		ScanProductLog scanProductLog = JSONObject.parseObject(data,ScanProductLog.class);
 		int userid = scanProductLog.getUserid();
-		int terminaltype = scanProductLog.getTerminaltype();	//// 终端类型：0、pc端；1、移动端；2、小程序端
+		int terminaltype = scanProductLog.getTerminaltype();	// 终端类型：0、pc端；1、移动端；2、小程序端
 		String terminaltypename = terminaltype == 0?"pc端":terminaltype == 1?"移动端":"小程序端";
 		String tablename = "userflaginfo";
 		String rowkey = userid+"";
 		String famliyname = "userbehavior";
-		String colum = "terminaltypelist";				//运营
+		String colum = "terminaltypelist";						// 运营
 		String mapdata = HBaseUtils.getdata(tablename,rowkey,famliyname,colum);
 		Map<String,Long> map = new HashMap<String,Long>();
 		if(StringUtils.isNotBlank(mapdata)){
@@ -42,7 +42,7 @@ public class TerminalTypeMap implements FlatMapFunction<KafkaEvent, TerminalType
 		String maxpreterminaltype = MapUtils.getmaxbyMap(map);
 
 		// 1-- 存储用户所有喜欢的终端
-		long preusetype = map.get(terminaltypename)==null?0l:map.get(terminaltypename);
+		long preusetype = map.get(terminaltypename)==null?0L:map.get(terminaltypename);
 		map.put(terminaltypename,preusetype+1);
 		String finalstring = JSONObject.toJSONString(map);
 		HBaseUtils.putdata(tablename,rowkey,famliyname,colum,finalstring);
@@ -54,7 +54,7 @@ public class TerminalTypeMap implements FlatMapFunction<KafkaEvent, TerminalType
 		if(StringUtils.isNotBlank(maxterminaltype)&&!maxpreterminaltype.equals(maxterminaltype)){
 			TerminalTypeInfo terminalTypeInfo = new TerminalTypeInfo();
 			terminalTypeInfo.setTerminaltype(maxpreterminaltype);
-			terminalTypeInfo.setCount(-1l);
+			terminalTypeInfo.setCount(-1L);
 			terminalTypeInfo.setGroupbyfield("==terminaltypeinfo=="+maxpreterminaltype);
 			collector.collect(terminalTypeInfo);
 		}
@@ -62,7 +62,7 @@ public class TerminalTypeMap implements FlatMapFunction<KafkaEvent, TerminalType
 		// 2--2 存储当前的终端偏好
 		TerminalTypeInfo terminalTypeInfo = new TerminalTypeInfo();
 		terminalTypeInfo.setTerminaltype(maxterminaltype);
-		terminalTypeInfo.setCount(1l);
+		terminalTypeInfo.setCount(1L);
 		terminalTypeInfo.setGroupbyfield("==terminaltypeinfo=="+maxterminaltype);
 		collector.collect(terminalTypeInfo);
 		colum = "terminaltype";
