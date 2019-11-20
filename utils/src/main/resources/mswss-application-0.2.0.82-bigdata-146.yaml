@@ -1,0 +1,111 @@
+# ------------------- mswss Deployment with bigdata on 146 ------------------- #
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mswss-bigdata-146-deployment-0.2.0.82
+  namespace: gis-example
+  labels:
+    gis-app: mswss-bigdata-146
+spec:
+  replicas: 1                   # Pod副本期待数量
+  selector:
+    matchLabels:
+      gis-app: mswss-bigdata-146            # 符合目标的Pod拥有此标签
+  template:                     # 根据此模板创建Pod的副本（实例）
+    metadata:
+      labels:
+        gis-app: mswss-bigdata-146          # Pod副本拥有的标签，对应selector
+        role: web
+    spec:
+      containers:               # Pod内容器的定义部分
+      - name: mswss             # 容器的名称
+        image: mswss:0.2.0.82   # 容器对应的Docker Image
+        volumeMounts:
+        - name: glusterfsvol-config146
+          mountPath: /usr/local/tomcat/webapps/mswss/WEB-INF/config
+        ports:
+        - containerPort: 8080   # 容器应用监听的端口号
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            scheme: HTTP
+            path: /
+            port: 8080
+          initialDelaySeconds: 30
+          timeoutSeconds: 30
+      volumes:
+      - name: glusterfsvol-config146
+        glusterfs:
+          endpoints: glusterfs-cluster
+          path: gvmswss/bigdata/configfiles/config
+          readOnly: false
+      hostAliases:
+        - ip: "192.168.56.214"
+          hostnames:
+            - "hadoop-master"
+            - "hbase-master"
+            - "node214"
+        - ip: "192.168.56.215"
+          hostnames:
+            - "hadoop-slave1"
+            - "hbase-slave1"
+            - "node215"
+        - ip: "192.168.56.220"
+          hostnames:
+            - "hadoop-slave2"
+            - "hbase-slave2"
+            - "node220"
+        - ip: "192.168.56.221"
+          hostnames:
+            - "hadoop-slave3"
+            - "hbase-slave3"
+            - "node223"
+        - ip: "192.168.56.222"
+          hostnames:
+            - "hadoop-slave4"
+            - "hbase-slave4"
+            - "node222"
+        - ip: "192.168.56.223"
+          hostnames:
+            - "hadoop-slave5"
+            - "hbase-slave5"
+            - "node223"
+        - ip: "192.168.56.142"
+          hostnames:
+            - "server142"
+        - ip: "192.168.56.143"
+          hostnames:
+            - "server143"
+        - ip: "192.168.56.144"
+          hostnames:
+            - "server144"
+        - ip: "192.168.56.154"
+          hostnames:
+            - "server154"
+        - ip: "192.168.56.146"
+          hostnames:
+            - "server146"     
+
+
+---
+# ------------------- mswss Service with bigdata on 146 ------------------- #
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: mswss-bigdata-146-deployment-0-2-0-82     # Service的全局唯一名称(Service的服务名ServiceName)
+  namespace: gis-example
+  labels:
+    gis-app: mswss-bigdata-146
+spec:
+  type: NodePort
+  selector:                     # Service对应的Pod拥有这里定义的标签（确定了哪些Pod副本（实例）对应到本服务）
+    gis-app: mswss-bigdata-146
+    role: web
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8888                  # Service提供服务的端口号(定义了Service的虚端口)，供集群中其它container访问端口
+    targetPort: 8080            # 转向后端pod中container暴露的端口
+    #nodePort: 31113             # 节点暴露的端口

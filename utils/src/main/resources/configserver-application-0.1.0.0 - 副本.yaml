@@ -1,0 +1,48 @@
+# ------------------- configcenter-server Deployment ------------------- #
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: config-server-deployment-0.1.0.0
+  namespace: gis-example
+  labels:
+    gis-app: config-server
+spec:
+  replicas: 1                   # Pod副本期待数量
+  selector:
+    matchLabels:
+      gis-app: configcenter-server    # 符合目标的Pod拥有此标签
+  template:                     # 根据此模板创建Pod的副本（实例）
+    metadata:
+      labels:
+        gis-app: configcenter-server  # Pod副本拥有的标签，对应selector
+        role: web
+    spec:
+      containers:               # Pod内容器的定义部分
+      - name: mswss             # 容器的名称
+        image: reg.gisnci.com/mirrors-gis/cfgcenter:latest   # 容器对应的Docker Image
+        ports:
+        - containerPort: 8761   # 容器应用监听的端口号
+          protocol: TCP
+          
+---
+# ------------------- configcenter-server Service ------------------- #
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: config-server-deployment-0-1-0-0     # Service的全局唯一名称(Service的服务名ServiceName)
+  namespace: gis-example
+  labels:
+    gis-app: configcenter-server
+spec:
+  type: NodePort
+  selector:                     # Service对应的Pod拥有这里定义的标签（确定了哪些Pod副本（实例）对应到本服务）
+    gis-app: configcenter-server
+    role: web
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8888                  # Service提供服务的端口号(定义了Service的虚端口)，供集群中其它container访问端口
+    targetPort: 8080            # 转向后端pod中container暴露的端口
+    #nodePort: 31113             # 节点暴露的端口
